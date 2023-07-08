@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isGoingOn = 0
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            if isGoingOn == 0 {
+                Text("**HOW FAST CAN YOU CLICK??**")
+                .font(.largeTitle)
+                Button() {
+                    isGoingOn = 1
+                } label: {
+                    Text("**Click to start**")
+                }
+                .padding()
+                .background(.blue)
+                .foregroundColor(.white)
+                .cornerRadius(30)
+            }
         }
         .padding()
     }
