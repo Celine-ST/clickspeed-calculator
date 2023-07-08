@@ -9,13 +9,30 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isGoingOn = 0
+    @State private var text = "HOW FAST CAN YOU CLICK???"
     var body: some View {
         VStack {
+            Text("**\(text)**")
+            .font(.largeTitle)
             if isGoingOn == 0 {
-                Text("**HOW FAST CAN YOU CLICK??**")
-                .font(.largeTitle)
                 Button() {
                     isGoingOn = 1
+                    text = "3"
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        withAnimation {
+                            text = "2"
+                        }
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        withAnimation {
+                            text = "1"
+                        }
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        withAnimation {
+                            text = ""
+                        }
+                    }
                 } label: {
                     Text("**Click to start**")
                 }
